@@ -38,7 +38,14 @@ php artisan vendor:publish --tag=laravel-admin-code-mirror
 ```php
 $form->js('code');
 
+// alias of `js` method
 $form->javascript('code');
+
+$form->json('code');
+
+$form->jsond('code');
+
+$form->typescript('code');
 ```
 
 设置高度

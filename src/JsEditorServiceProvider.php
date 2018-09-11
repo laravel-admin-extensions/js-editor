@@ -20,6 +20,10 @@ class JsEditorServiceProvider extends ServiceProvider
         Admin::booting(function () {
             Form::extend('js', Editor::class);
             Form::alias('js', 'javascript');
+
+            Form::extend('json', Json::class);
+            Form::extend('jsond', Jsond::class);
+            Form::extend('typescript', Typescript::class);
         });
     }
 }

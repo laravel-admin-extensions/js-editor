@@ -3,9 +3,20 @@
 namespace Encore\JsEditor;
 
 use Encore\Admin\Form\Field;
+use Jxlwqq\CodeMirror\CodeMirror;
 
 class Editor extends Field
 {
+    protected $options = [
+        'mode'             => 'javascript',
+        'lineNumbers'      => true,
+        'matchBrackets'    => true,
+        'continueComments' => true,
+        'extraKeys'        => [
+            'Ctrl-Q' => 'toggleComment',
+        ],
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -15,18 +26,18 @@ class Editor extends Field
      * {@inheritdoc}
      */
     protected static $css = [
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/lib/codemirror.css',
+        CodeMirror::ASSETS_PATH.'lib/codemirror.css',
     ];
 
     /**
      * {@inheritdoc}
      */
     protected static $js = [
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/lib/codemirror.js',
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/addon/edit/matchbrackets.js',
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/addon/comment/continuecomment.js',
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/addon/comment/comment.js',
-        'vendor/laravel-admin-ext/code-mirror/codemirror-5.40.0/mode/javascript/javascript.js',
+        CodeMirror::ASSETS_PATH.'lib/codemirror.js',
+        CodeMirror::ASSETS_PATH.'addon/edit/matchbrackets.js',
+        CodeMirror::ASSETS_PATH.'addon/comment/continuecomment.js',
+        CodeMirror::ASSETS_PATH.'addon/comment/comment.js',
+        CodeMirror::ASSETS_PATH.'mode/javascript/javascript.js',
     ];
 
     /**
@@ -46,15 +57,7 @@ class Editor extends Field
     public function render()
     {
         $options = array_merge(
-            [
-                'mode' => 'javascript',
-                'lineNumbers' => true,
-                'matchBrackets' => true,
-                'continueComments' => true,
-                'extraKeys' => [
-                    'Ctrl-Q' => 'toggleComment',
-                ],
-            ],
+            $this->options,
             JsEditor::config('config', [])
         );
 
