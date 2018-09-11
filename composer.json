@@ -1,0 +1,34 @@
+{
+    "name": "laravel-admin-ext/js-editor",
+    "description": "Javascript editor extension for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "code mirror", "js", "javascript", "editor"],
+    "homepage": "https://github.com/laravel-admin-ext/js-editor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "jxlwqq/code-mirror": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\JsEditor\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\JsEditor\\JsEditorServiceProvider"
+            ]
+
+        }
+    }
+}
